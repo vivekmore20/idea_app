@@ -1,0 +1,22 @@
+{
+  "name": "idea_app",
+  "version": "0.0.1",
+  "description": "idea app",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekmore20/idea_app.git"
+  },
+  "author": "Vivek More",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vivekmore20/idea_app/issues"
+  },
+  "homepage": "https://github.com/vivekmore20/idea_app#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
