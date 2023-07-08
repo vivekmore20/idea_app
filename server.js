@@ -5,6 +5,7 @@ const serverConfig=require('./configes/server.config');
 const dbConfig=require('./configes/db.config');
 //const {init}=require("./models/user.model");
 const userModel=require("./models/user.model");
+const bcrypt=require("bcrypt");
 
 
 
@@ -47,7 +48,7 @@ const admin1=await userModel.create({
         userId:"admin",
         email:"vivekmore7@gmail.com",
         userType:"ADMIN",
-        password:"viv@123"
+        password:bcrypt.hashSync("Viv@123",8);
     });
     console.log(admin1);
 }
