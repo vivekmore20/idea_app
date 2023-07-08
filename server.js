@@ -1,9 +1,14 @@
 
 const express=require('express');
 const mongoose=require('mongoose');
-
 const serverConfig=require('./configes/server.config');
 const dbConfig=require('./configes/db.config');
+//const {init}=require("./models/user.model");
+const userModel=require("./models/user.model");
+
+
+
+
 //central connector
 const app=express();
 
@@ -13,14 +18,39 @@ mongoose.connect(dbConfig.DB_URL);
 //connection
 const db=mongoose.connection;
 
+//if error occur
 db.on('error',()=>{
     console.log("Errroe while connecting to DB");
 })
-
+//if sucessfully connected with mongodb 
 db.once('open',()=>{
     console.log("Db is connected");
+
+    init();
 })
 
+async function  init(){
+
+
+//Check admin is preset or not
+
+let admin=userModel.findOne({
+    userId:"admin"
+})
+if(admin){
+    console.log("Admin is already present");
+    return;
+}
+//it will return promise 
+const admin1=await userModel.create({
+        name :"Vivek More",
+        userId:"admin",
+        email:"vivekmore7@gmail.com",
+        userType:"ADMIN",
+        password:"viv@123"
+    });
+    console.log(admin1);
+}
 
 
 //starting server
